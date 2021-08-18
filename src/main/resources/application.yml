@@ -1,0 +1,68 @@
+spring:
+  jwt:
+    secret: yonsei-maist
+jasypt:
+  encryptor:
+    bean: stringEncryptor
+---
+spring:
+  profiles: local
+  datasource:
+    url: jdbc:mysql://maist.yonsei.ac.kr:3306/maist_intern_low?characterEncoding=UTF-8&serverTimezone=UTC
+    username: ENC(lKvyZZw6vtq1TnGiKrEHj7kklVh7WwdibAbOGMSmd10=)
+    password: ENC(V4JMj87k6ZiFQbgnslJlq4nJk3H3N0dm4eBt1xBD1LJWA676r4ROtollU84gTRl1)
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+  thymeleaf:
+    prefix: classpath:/templates/
+    check-template-location: true
+    suffix: .html
+    mode: HTML
+    cache: false
+    template-resolver-order: 0
+  servlet:
+    multipart:
+      max-file-size: 10MB
+logging:
+  pattern:
+    console: "%d %-5level %logger{30}:%line - %msg%n"
+  level:
+    org.hibernate.type: trace
+server:
+  port: 8080
+---
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://maist.yonsei.ac.kr:3306/maist_intern_low?characterEncoding=UTF-8&serverTimezone=UTC
+    username: ENC(lKvyZZw6vtq1TnGiKrEHj7kklVh7WwdibAbOGMSmd10=)
+    password: ENC(V4JMj87k6ZiFQbgnslJlq4nJk3H3N0dm4eBt1xBD1LJWA676r4ROtollU84gTRl1)
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+  thymeleaf:
+    prefix: classpath:/templates/
+    check-template-location: true
+    suffix: .html
+    mode: HTML
+    cache: false
+    template-resolver-order: 0
+  servlet:
+    multipart:
+      max-file-size: 10MB
+logging:
+  pattern:
+    console: "%d %-5level %logger{30}:%line - %msg%n"
+  level:
+    org.hibernate.type: debug
+server:
+  port: 8080
